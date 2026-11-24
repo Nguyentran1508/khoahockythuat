@@ -83,6 +83,139 @@ textarea,input[type=text]{width:100%;font:inherit;color:var(--ink);background:va
 .wsc .sl{display:flex;align-items:center;gap:8px;font-size:.88rem;font-weight:600}.wsc .sl input{width:120px}.wsc .sl b{min-width:2ch;text-align:right}
 .wsc .lnk{margin:0}
 .wsm{margin-top:10px;font-size:.92rem}.wsm summary{cursor:pointer;font-weight:600}.wsm p{margin:6px 0}
+
+/* ===== RESPONSIVE: tablet & điện thoại ===== */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:hidden;overflow-wrap:anywhere}
+img,svg,video{max-width:100%;height:auto}
+.wsv svg{height:auto}
+.q,.c,.note,.rv,.ex{min-width:0}
+.tw{-webkit-overflow-scrolling:touch}
+
+/* Màn hình lớn (>1400px): rộng hơn một chút */
+@media (min-width:1400px){.wrap,.tabbar .tabs{max-width:1200px}}
+
+/* Máy tính bảng (761px – 1024px) */
+@media (min-width:761px) and (max-width:1024px){
+  .wrap{padding:0 20px}
+  .tabbar .tabs{padding:0 20px}
+  .app{grid-template-columns:220px 1fr;gap:20px}
+  nav{top:64px}
+  nav button{font-size:.88rem;padding:10px 10px}
+  .opts{gap:10px}
+  .note{font-size:1.04rem}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  .ai-p{width:min(420px,calc(100vw - 40px))}
+}
+
+/* Máy tính bảng dọc & điện thoại lớn (≤760px) */
+@media (max-width:760px){
+  body{font-size:15.5px}
+  .wrap{padding:0 14px}
+  .tabbar .tabs{padding:0 14px}
+  .hero{padding:14px 0 12px;border-bottom-width:5px}
+  .brand{font-size:1.15rem;display:block}
+  .hero span{display:block;font-size:.85rem;line-height:1.4}
+  .tabbar{padding:8px 0;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tabbar::-webkit-scrollbar{display:none}
+  .tabs button{min-height:44px;padding:8px 14px;scroll-snap-align:start}
+  .sec{padding:16px 0 96px}
+  .sec h2{font-size:1.25rem}
+  nav{margin-bottom:6px}
+  nav h2{font-size:1.1rem;margin-bottom:8px}
+  nav button{min-height:44px;align-items:center}
+  nav button.all{margin-bottom:10px}
+  .app{gap:14px}
+  .q{padding:14px}
+  .qt{font-size:1rem}
+  .opts button{min-height:48px;font-size:1rem;padding:10px 12px}
+  .note{padding:12px 14px;font-size:1rem;line-height:1.7;border-left-width:6px}
+  .btn,.lnk{min-height:44px}
+  .lnk{padding:6px 12px}
+  .bar{gap:10px}
+  .bar .btn{flex:1 1 auto}
+  textarea{min-height:96px}
+  input[type=text]{max-width:100%}
+  th,td{padding:8px 8px;font-size:.88rem}
+  .mb{min-width:70px}
+  .g2{grid-template-columns:1fr 1fr;gap:10px}
+  .c{padding:12px}
+  .c .big{font-size:1.15rem}
+  .intro{padding:14px}
+  /* Không gian giải bài tương tác */
+  .ws{padding:0 10px 10px}
+  .ws>summary{min-height:44px;display:flex;align-items:center}
+  .wsv svg{max-width:100%}
+  .wsv text{font-size:14px}
+  .wsv .tk{font-size:12.5px}
+  .wsv .big{font-size:24px}
+  .wsv .lb2{font-size:13px}
+  .wsv .dg text{font-size:14px}
+  .wsc{gap:10px 12px}
+  .wsc .sl{flex:1 1 100%}
+  .wsc .sl input{flex:1;width:auto;min-width:0;height:32px}
+  .wsc .btn,.wsc .lnk{flex:1 1 auto}
+  .wsm summary{min-height:40px;display:flex;align-items:center}
+  /* Gia sư AI: bảng gần toàn màn hình */
+  .ai-fab{right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));min-height:48px;padding:10px 16px;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  .ai-p{left:10px;right:10px;width:auto;bottom:calc(68px + env(safe-area-inset-bottom,0px));max-height:calc(100vh - 150px);max-height:calc(100dvh - 150px)}
+  .ai-f input{font-size:16px;min-height:44px}
+  .ai-f .btn{min-height:44px;padding:8px 14px}
+  .ai-m.u{margin-left:16px}
+}
+
+/* Điện thoại nhỏ (≤480px) */
+@media (max-width:480px){
+  .g2{grid-template-columns:1fr}
+  nav .list{grid-template-columns:1fr}
+  h1{font-size:1.45rem}
+  .wsv text{font-size:15px}
+  .wsv .tk{font-size:13.5px}
+  .wsv .lb2{font-size:14px}
+}
+
+/* Điện thoại xoay ngang (chiều cao thấp) */
+@media (max-height:480px) and (orientation:landscape){
+  .hero{padding:8px 0}
+  .tabbar{position:static}
+  nav{position:static}
+  .ai-p{max-height:calc(100vh - 80px);max-height:calc(100dvh - 80px)}
+}
+
+/* Thiết bị cảm ứng: điểm kéo to hơn, không bị zoom khi chạm hai lần */
+@media (pointer:coarse){
+  button,.btn,.lnk,summary{touch-action:manipulation}
+  .wsv .dg circle{transform-box:fill-box;transform-origin:center;transform:scale(1.45)}
+  .wsv .dg{-webkit-tap-highlight-color:transparent}
+  .wsc .sl input[type=range]{height:32px}
+  input[type=range]{touch-action:pan-y}
+}
+
+/* Tôn trọng người dùng giảm chuyển động */
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* ===== FIX: thanh tiêu đề/tab không bị che bởi tai thỏ, thanh trạng thái ===== */
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{padding-top:0}
+body::before{content:"";position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30;pointer-events:none}
+.hero{padding-top:calc(20px + env(safe-area-inset-top,0px));padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.tabbar{top:env(safe-area-inset-top,0px);z-index:25;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px);box-shadow:0 2px 0 rgba(0,0,0,.04)}
+nav{top:calc(env(safe-area-inset-top,0px) + 72px)}
+.sec h2,.sec h3,.q,.ws{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 64px)}
+@media (max-width:760px){
+  .hero{padding-top:calc(14px + env(safe-area-inset-top,0px))}
+  .brand{overflow-wrap:anywhere}
+}
+@media (max-height:480px) and (orientation:landscape){
+  .hero{padding-top:calc(8px + env(safe-area-inset-top,0px))}
+}
+
+/* ===== Lý thuyết tương tác ===== */
+.lt select{font:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--mut);border-radius:6px;padding:4px 8px;min-height:36px}
+.lt .sl input[type=text]{width:auto;flex:1;min-width:0;max-width:none;margin:0}
+.ltx{margin-top:10px;font-size:.95rem;line-height:1.65;background:var(--card);border:1.5px solid var(--line);border-left:6px solid var(--hl);border-radius:6px;padding:10px 14px}
+.ltx b{background:linear-gradient(transparent 60%,var(--hl) 60%)}
+.c ol{margin:0;padding-left:18px;font-size:.95rem}.c li{margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -377,11 +510,11 @@ else{const t=T[view],w=S.w||{},ws=t.th.map((x,i)=>i).filter(i=>w[view+"-"+i]>0);
 h=`<div class="top"><h1>${t.n}</h1></div>`;
 if(ws.length)h+=`<div class="rv"><b>Phần cần ôn lại</b>${ws.map(i=>`<p><b>${t.th[i].k}.</b> ${t.th[i].d} <button class="lnk" data-more="${i}">Luyện thêm phần này</button></p>`).join("")}</div>`;
 h+=`<div class="tabs">${[["lt","Lý thuyết"],["tn","Trắc nghiệm ("+t.q.length+")"],["tl","Tự luận"],["ud","Ứng dụng ("+t.ap.length+")"]].map(x=>`<button data-tab="${x[0]}" aria-current="${tab===x[0]}">${x[1]}</button>`).join("")}</div>`;
-if(tab==="lt")h+=`<div class="note">${t.note}</div>`+t.th.map(x=>`<div class="note"><b>${x.k}</b><br>${x.d}</div>`).join("");
+if(tab==="lt")h+=`<div class="note">${t.note}</div>`+LT.slot(view)+LT.more(view)+`<h3>Các mục kiến thức chi tiết</h3>`+t.th.map(x=>`<div class="note"><b>${x.k}</b><br>${x.d}</div>`).join("");
 else if(tab==="tn")h+=t.q.map((q,i)=>card(q,i+1)).join("")+`<div class="bar"><button class="btn" data-reset>Làm lại phần trắc nghiệm</button></div>`;
 else if(tab==="tl"){if(!P[view])P[view]=gen(view);h+=P[view].map((p,i)=>tlCard(p,i+1)).join("")+`<div class="bar"><button class="btn" data-newtl>Bộ bài mới</button><span class="empty">Đề tự luận sinh ngẫu nhiên, làm lại bao nhiêu lần tùy ý.</span></div>`}
 else h+=`<p>Các bài toán đặt trong tình huống thực tế và kỹ thuật, gần với cách đặt vấn đề của đề tài khoa học kỹ thuật.</p>`+t.ap.map((p,i)=>tlCard(p,i+1)).join("")+`<div class="bar"><button class="btn" data-redo>Làm lại các bài ứng dụng</button></div>`}
-$("main").innerHTML=h;WS.mount()}
+$("main").innerHTML=h;WS.mount();LT.mount()}
 function stats(){const w=S.w||{},st=S.t||{};return T.map((t,i)=>{const a=t.q.filter(q=>S[q.id]!==undefined).length,c=t.q.filter(q=>S[q.id]===0).length,o=st[i]||{n:0,c:0},n=a+o.n,k=c+o.c;return{i,t:t.n,a,c,o,n,k,p:n?Math.round(100*k/n):null,rev:t.th.filter((x,j)=>w[i+"-"+j]>0).length}})}
 function home(){const R=stats(),nTN=T.reduce((s,t)=>s+t.q.length,0),nUD=T.reduce((s,t)=>s+t.ap.length,0),nG=G.reduce((s,g)=>s+g.length,0),nTH=T.reduce((s,t)=>s+t.th.length,0);
 const nx=R.filter(r=>r.rev>0).sort((x,y)=>y.rev-x.rev)[0]||R.filter(r=>r.p!==null&&r.p<75).sort((x,y)=>x.p-y.p)[0]||R.find(r=>r.n===0)||R[0];
@@ -743,6 +876,121 @@ const up=()=>{if(D&&!D.mv&&MO[D.s.ti].tap){MO[D.s.ti].tap(D.s,D.i);paint(D.el,D.
 document.addEventListener("pointerup",up);document.addEventListener("pointercancel",()=>{D=null});
 return{slot:p=>`<details class="ws" open data-w="${p.id}"><summary>Không gian giải bài · hình minh họa tương tác</summary><p class="wsh">Hình được vẽ từ số liệu của đề. Kéo các điểm, chạm vào hình hoặc dùng thanh trượt để thử và chỉnh ngay trên hình.</p><div class="wsv"></div><div class="wsc"></div><details class="wsm"><summary>Số đo trên hình (để kiểm tra sau khi tự tính)</summary><div class="wsi"></div></details></details>`,
 mount:()=>document.querySelectorAll(".ws").forEach(el=>{const p=PM[el.dataset.w];if(p)build(el,p)})}})();
+
+
+/* ===== Lý thuyết tương tác: mỗi chủ đề một hình minh họa kéo/chỉnh được + hướng dẫn từng bước ===== */
+const LT=(()=>{
+const W=360,H=270,r2=n=>fm(+(+n).toFixed(2)).replace("-","−"),gc=(a,b)=>b?gc(b,a%b):a,LV={};
+const F=b=>{const k=Math.min((W-20)/(b[1]-b[0]),(H-20)/(b[3]-b[2])),ox=(W-k*(b[1]-b[0]))/2,oy=(H-k*(b[3]-b[2]))/2;return{k,X:x=>ox+k*(x-b[0]),Y:y=>H-oy-k*(y-b[2])}};
+const ln=(f,x1,y1,x2,y2,c="s1",e="")=>`<line class="${c}" x1="${f.X(x1)}" y1="${f.Y(y1)}" x2="${f.X(x2)}" y2="${f.Y(y2)}" ${e}/>`;
+const tx=(f,x,y,t,c="lb2",dx=0,dy=0)=>`<text class="${c}" x="${f.X(x)+dx}" y="${f.Y(y)+dy}" text-anchor="middle">${t}</text>`;
+const dot=(f,x,y,c="f1",r=5)=>`<circle class="${c}" cx="${f.X(x)}" cy="${f.Y(y)}" r="${r}"/>`;
+const grid=(f,b)=>{let s="";for(let x=Math.ceil(b[0]);x<=b[1];x++)s+=ln(f,x,b[2],x,b[3],x?"g":"ax");for(let y=Math.ceil(b[2]);y<=b[3];y++)s+=ln(f,b[0],y,b[1],y,y?"g":"ax");return s};
+const DF=`<defs>${[["a","ink"],["b","no"],["c","ok"]].map(m=>`<marker id="lt${m[0]}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--${m[1]})"/></marker>`).join("")}</defs>`;
+const AR=(f,x1,y1,x2,y2,n)=>ln(f,x1,y1,x2,y2,"s"+n,`marker-end="url(#lt${"abc"[n-1]})"`);
+const svg=s=>`<svg viewBox="0 0 ${W} ${H}">${s}</svg>`;
+const ex=(a,b)=>`${a?(a===1?"":a===-1?"−":a)+"x":""}${b?(b>0?(a?" + ":""):(a?" − ":"−"))+(Math.abs(b)===1?"":Math.abs(b))+"y":""}`||"0";
+const sg=n=>n<0?"−"+Math.abs(n):n,sp=n=>n<0?"("+sg(n)+")":n;
+const D=[];
+/* 0. Venn */
+D[0]={t:"Biểu đồ Venn: đếm phần tử của A ∪ B",h:"Kéo các thanh trượt để đổi số phần tử. Quan sát phần giao: nó bị cộng hai lần nên phải trừ đi một lần.",
+c:[["a","n(A)",1,20,12],["b","n(B)",1,20,9],["ab","n(A∩B)",0,20,4]],fix:v=>{v.ab=Math.min(v.ab,v.a,v.b)},
+r:v=>{const r=62,t=v.ab/Math.min(v.a,v.b),d=2*r+8-t*(2*r-22),c1=180-d/2,c2=180+d/2,T=(x,y,s,c="big")=>`<text class="${c}" x="${x}" y="${y}" text-anchor="middle">${s}</text>`,u=v.a+v.b-v.ab;
+return[svg(`<circle class="vn s2" cx="${c1}" cy="125" r="${r}"/><circle class="vn s3" cx="${c2}" cy="125" r="${r}"/>`+T(c1,38,"A","lb2")+T(c2,38,"B","lb2")+T(180-r,132,v.a-v.ab)+T(180,132,v.ab)+T(180+r,132,v.b-v.ab)+T(180,235,"n(A∪B) = "+u)),
+`Chỉ thuộc A: <b>${v.a-v.ab}</b>; thuộc cả hai: <b>${v.ab}</b>; chỉ thuộc B: <b>${v.b-v.ab}</b>.<br>n(A∪B) = n(A) + n(B) − n(A∩B) = ${v.a} + ${v.b} − ${v.ab} = <b>${u}</b>.<br>Nếu chỉ cộng n(A) + n(B) = ${v.a+v.b} thì ${v.ab} phần tử chung bị đếm hai lần.`]}};
+/* 1. Bất phương trình bậc nhất hai ẩn */
+D[1]={t:"Miền nghiệm của ax + by ⋄ c",h:"Đổi hệ số a, b, c và dấu. Miền tô vàng là miền nghiệm; chấm là điểm thử (xanh: thỏa, đỏ: không thỏa).",
+c:[["a","a",-5,5,1],["b","b",-5,5,1],["c","c",-10,10,4],["op","Dấu",["≤","<","≥",">"],"≤"]],
+r:v=>{const b=[-6,6,-6,6],f=F(b),{a,b:bb,c,op}=v,ok=(x,y)=>{const g=a*x+bb*y;return op==="≤"?g<=c:op==="<"?g<c:op==="≥"?g>=c:g>c};
+if(!a&&!bb)return[svg(grid(f,b)),"Hãy chọn a và b không đồng thời bằng 0."];
+let s=DF;for(let x=-6;x<6;x+=.5)for(let y=-6;y<6;y+=.5)if(ok(x+.25,y+.25))s+=`<rect class="rg" x="${f.X(x)}" y="${f.Y(y+.5)}" width="${f.k*.5+.5}" height="${f.k*.5+.5}"/>`;
+s+=grid(f,b);const st=op==="<"||op===">";
+s+=bb?ln(f,-6,(c+6*a)/bb,6,(c-6*a)/bb,"s2"+(st?" d":"")):ln(f,c/a,-6,c/a,6,"s2"+(st?" d":""));
+const p=c!==0?[0,0]:(bb?[0,1]:[1,0]),nm=c!==0?"O":"M",g=a*p[0]+bb*p[1],y=ok(p[0],p[1]);
+s+=dot(f,p[0],p[1],y?"f3":"f2",6)+tx(f,p[0],p[1],nm,"lb2",12,-8);
+return[svg(s),`Bờ: <b>${ex(a,bb)} = ${c}</b> (${st?"nét đứt, không kể bờ":"nét liền, kể cả bờ"}).<br>Thay ${nm}(${p[0]}; ${p[1]}): ${g} ${op} ${c} là mệnh đề <b>${y?"đúng":"sai"}</b> ⇒ miền nghiệm là nửa mặt phẳng <b>${y?"chứa":"không chứa"} ${nm}</b>.${c===0?"<br>Bờ đi qua O nên phải chọn điểm thử khác O.":""}`]}};
+/* 2. Hàm số bậc hai */
+D[2]={t:"Parabol y = ax² + bx + c",h:"Kéo a, b, c: xem bề lõm, đỉnh, trục đối xứng và giao điểm với Ox thay đổi thế nào.",
+c:[["a","a",-3,3,1,.5],["b","b",-6,6,-2],["c","c",-6,6,-3]],fix:v=>{v.a=v.a||.5},
+r:v=>{const b=[-8,8,-8,8],f=F(b),{a,b:bb,c}=v,y=x=>a*x*x+bb*x+c;let s=grid(f,b),p="",on=0;
+for(let x=-8;x<=8.001;x+=.1){const Y=y(x);if(Math.abs(Y)<=8){p+=(on?"L":"M")+f.X(x).toFixed(1)+" "+f.Y(Y).toFixed(1);on=1}else on=0}
+s+=`<path class="pb" d="${p}"/>`;const xv=-bb/(2*a),yv=y(xv),Dl=bb*bb-4*a*c;
+if(Math.abs(xv)<=8)s+=ln(f,xv,-8,xv,8,"s1 d");
+if(Math.abs(xv)<=8&&Math.abs(yv)<=8)s+=dot(f,xv,yv,"f2",6)+tx(f,xv,yv,"I","lb2",14,-8);
+let rt="";if(Dl>=0){const x1=(-bb-Math.sqrt(Dl))/(2*a),x2=(-bb+Math.sqrt(Dl))/(2*a);[x1,x2].forEach(x=>{if(Math.abs(x)<=8)s+=dot(f,x,0,"f3",5)});rt=Dl>0?`, hai nghiệm x ≈ ${r2(Math.min(x1,x2))} và ${r2(Math.max(x1,x2))}`:`, nghiệm kép x = ${r2(x1)}`}
+return[svg(s),`Δ = b² − 4ac = ${sp(bb)}² − 4·${sp(a)}·${sp(c)} = <b>${r2(Dl)}</b> ⇒ ${Dl>0?"cắt Ox tại <b>2 điểm</b>":Dl===0?"<b>tiếp xúc</b> Ox":"<b>không cắt</b> Ox"}${rt}.<br>Trục đối xứng x = −b/2a = <b>${r2(xv)}</b>; đỉnh I(${r2(xv)}; ${r2(yv)}).<br>a ${a>0?"&gt; 0: bề lõm hướng lên, giá trị <b>nhỏ nhất</b>":"&lt; 0: bề lõm hướng xuống, giá trị <b>lớn nhất</b>"} bằng ${r2(yv)} tại đỉnh.`]}};
+/* 3. Hệ thức lượng */
+D[3]={t:"Tam giác: định lí côsin, diện tích, bán kính ngoại tiếp",h:"Đổi hai cạnh b, c và góc A xen giữa. Tam giác tự vẽ lại và các số đo cập nhật ngay.",
+c:[["b","b",2,10,5],["c","c",2,10,7],["A","Góc A (°)",10,170,60,5]],
+r:v=>{const{b,c,A}=v,rd=A*Math.PI/180,Bx=c*Math.cos(rd),By=c*Math.sin(rd),a2=b*b+c*c-2*b*c*Math.cos(rd),a=Math.sqrt(a2),S=b*c*Math.sin(rd)/2,R=a/(2*Math.sin(rd));
+const bd=[Math.min(0,Bx)-1.5,Math.max(b,Bx)+1.5,-1.5,By+1.5],f=F(bd);let s=`<polygon class="rg s1" points="${f.X(0)},${f.Y(0)} ${f.X(Bx)},${f.Y(By)} ${f.X(b)},${f.Y(0)}"/>`;
+s+=tx(f,0,0,"A","lb2",-10,16)+tx(f,Bx,By,"B","lb2",0,-8)+tx(f,b,0,"C","lb2",10,16)+tx(f,b/2,0,"b="+b,"lb2",0,16)+tx(f,Bx/2,By/2,"c="+c,"lb2",-18,-4)+tx(f,(Bx+b)/2,By/2,"a≈"+r2(a),"lb2",16,-4)+tx(f,0,0,A+"°","lb2",Math.max(22,18),-6);
+const cmp=a2>b*b+c*c+1e-9?"&gt;":a2<b*b+c*c-1e-9?"&lt;":"=";
+return[svg(s),`a² = b² + c² − 2bc·cosA = ${b}² + ${c}² − 2·${b}·${c}·cos${A}° = <b>${r2(a2)}</b> ⇒ a ≈ <b>${r2(a)}</b>.<br>S = ½·b·c·sinA ≈ <b>${r2(S)}</b>; R = a/(2sinA) ≈ <b>${r2(R)}</b>.<br>a² ${cmp} b² + c² (${r2(b*b+c*c)}) nên góc A ${cmp==="&gt;"?"là góc <b>tù</b>":cmp==="="?"là góc <b>vuông</b>":"là góc <b>nhọn</b>"}.`]}};
+/* 4. Vectơ */
+D[4]={t:"Vectơ: tổng, tích vô hướng và góc",h:"Đổi tọa độ của vectơ a và b. Hình bình hành cho thấy quy tắc hình bình hành của tổng a + b.",
+c:[["ax","a₁",-5,5,3],["ay","a₂",-5,5,1],["bx","b₁",-5,5,1],["by","b₂",-5,5,3]],
+r:v=>{const{ax,ay,bx,by}=v,b=[-10,10,-10,10],f=F(b);let s=DF+grid(f,b)+ln(f,ax,ay,ax+bx,ay+by,"s2 d")+ln(f,bx,by,ax+bx,ay+by,"s1 d")+AR(f,0,0,ax,ay,1)+AR(f,0,0,bx,by,2)+AR(f,0,0,ax+bx,ay+by,3)+tx(f,ax,ay,"a","lb2",8,-8)+tx(f,bx,by,"b","lb2",8,-8)+tx(f,ax+bx,ay+by,"a+b","lb2",14,-8);
+const d=ax*bx+ay*by,na=Math.hypot(ax,ay),nb=Math.hypot(bx,by);let g="";
+if(na&&nb){const c=Math.max(-1,Math.min(1,d/(na*nb)));g=`cos(a, b) = ${r2(d)}/(${r2(na)}·${r2(nb)}) = ${r2(c)} ⇒ góc ≈ <b>${r2(Math.acos(c)*180/Math.PI)}°</b>${d===0?" (<b>vuông góc</b>)":""}.`}else g="Một vectơ bằng 0 nên chưa có góc.";
+return[svg(s),`a + b = (${sp(ax)} + ${sp(bx)}; ${sp(ay)} + ${sp(by)}) = <b>(${sg(ax+bx)}; ${sg(ay+by)})</b>.<br>a·b = ${sp(ax)}·${sp(bx)} + ${sp(ay)}·${sp(by)} = <b>${sg(d)}</b>; |a| ≈ ${r2(na)}, |b| ≈ ${r2(nb)}.<br>${g}`]}};
+/* 5. Tọa độ */
+D[5]={t:"Tọa độ: độ dài, trung điểm, phương trình đường thẳng",h:"Đổi tọa độ A và B. Hình cho thấy vectơ AB, trung điểm M và đường thẳng AB.",
+c:[["xa","xA",-6,6,-3],["ya","yA",-6,6,-2],["xb","xB",-6,6,4],["yb","yB",-6,6,3]],
+r:v=>{const{xa,ya,xb,yb}=v,b=[-7,7,-7,7],f=F(b),dx=xb-xa,dy=yb-ya;let s=DF+grid(f,b);
+if(!dx&&!dy)return[svg(s+dot(f,xa,ya,"f1",6)),"A trùng B: chưa có đường thẳng AB. Hãy kéo B ra xa A."];
+const a=dy,bb=-dx,c=dx*ya-dy*xa;
+s+=bb?ln(f,-7,(-c-7*a)/bb,7,(-c+7*a)/bb,"s2 d"):ln(f,-c/a,-7,-c/a,7,"s2 d");
+s+=AR(f,xa,ya,xb,yb,1)+dot(f,xa,ya,"f1")+dot(f,xb,yb,"f1")+dot(f,(xa+xb)/2,(ya+yb)/2,"f3")+tx(f,xa,ya,"A","lb2",-10,-8)+tx(f,xb,yb,"B","lb2",10,-8)+tx(f,(xa+xb)/2,(ya+yb)/2,"M","lb2",12,14);
+return[svg(s),`AB→ = (${xb} − ${sp(xa)}; ${yb} − ${sp(ya)}) = <b>(${sg(dx)}; ${sg(dy)})</b>; AB = √(${dx*dx} + ${dy*dy}) ≈ <b>${r2(Math.hypot(dx,dy))}</b>.<br>Trung điểm M(${r2((xa+xb)/2)}; ${r2((ya+yb)/2)}).<br>Đường thẳng AB nhận AB→ làm vtcp, vtpt n = (${sg(dy)}; ${sg(-dx)}): <b>${ex(a,bb)}${c?(c>0?" + ":" − ")+Math.abs(c):""} = 0</b>.`]}};
+/* 6. Tổ hợp */
+D[6]={t:"Hoán vị, chỉnh hợp, tổ hợp: hàng Pascal",h:"Chọn n và k. Các cột là C(n, i) với i = 0…n; cột xanh là C(n, k) đang xét.",
+c:[["n","n",1,10,6],["k","k",0,10,2]],fix:v=>{v.k=Math.min(v.k,v.n)},
+r:v=>{const{n,k}=v,m=n+1,bw=320/m,mx=comb(n,Math.floor(n/2));let s=`<line class="ax" x1="14" y1="200" x2="346" y2="200"/>`;
+for(let i=0;i<=n;i++){const h=comb(n,i)/mx*140,x=20+i*bw;s+=`<rect class="${i===k?"f3":"f1"}" x="${x+2}" y="${200-h}" width="${bw-4}" height="${h}" fill-opacity="${i===k?1:.35}"/><text class="tk" x="${x+bw/2}" y="${194-h}" text-anchor="middle">${comb(n,i)}</text><text class="tk" x="${x+bw/2}" y="218" text-anchor="middle">${i}</text>`}
+s+=`<text class="lb2" x="180" y="248" text-anchor="middle">C(${n}, i) với i = 0…${n}</text>`;
+return[svg(s),`n! = <b>${fact(n)}</b> (hoán vị của n phần tử).<br>Chỉnh hợp (có thứ tự): A(${n},${k}) = n!/(n−k)! = <b>${per(n,k)}</b>.<br>Tổ hợp (không thứ tự): C(${n},${k}) = A(${n},${k})/k! = ${per(n,k)}/${fact(k)} = <b>${comb(n,k)}</b>. Mỗi nhóm ${k} phần tử xếp được ${k}! = ${fact(k)} thứ tự, nên chia k!.<br>Tổng cả hàng = 2<sup>${n}</sup> = ${Math.pow(2,n)}.`]}};
+/* 7. Xác suất */
+D[7]={t:"Xác suất: bảng 36 kết quả của hai con xúc xắc",h:"Mỗi ô là một kết quả (i; j), ghi tổng i + j. Chọn biến cố rồi đếm số ô tô vàng.",
+c:[["s","Giá trị s",2,12,7],["m","Biến cố",["Tổng = s","Tổng ≥ s","Tổng ≤ s"],"Tổng = s"]],
+r:v=>{const{s:S,m}=v,ok=t=>m==="Tổng = s"?t===S:m==="Tổng ≥ s"?t>=S:t<=S;let s="",k=0;
+for(let i=1;i<=6;i++){s+=`<text class="tk" x="${52+(i-1)*44+22}" y="34" text-anchor="middle">j=${i}</text><text class="tk" x="40" y="${48+(i-1)*34+22}" text-anchor="end">i=${i}</text>`;
+for(let j=1;j<=6;j++){const y=ok(i+j);if(y)k++;s+=`<rect x="${52+(j-1)*44}" y="${48+(i-1)*34}" width="44" height="34" style="fill:${y?"var(--hl)":"var(--card)"};stroke:var(--line);stroke-width:1"/><text class="lb2" x="${52+(j-1)*44+22}" y="${48+(i-1)*34+22}" text-anchor="middle">${i+j}</text>`}}
+const g=gc(k,36);return[svg(s),`Không gian mẫu: n(Ω) = 6·6 = <b>36</b>. Số kết quả thuận lợi: n(A) = <b>${k}</b>.<br>P(A) = ${k}/36 = <b>${k?(k/g)+"/"+(36/g):"0"}</b> ≈ ${r2(k/36)}.<br>Biến cố đối: P(Ā) = 1 − P(A) = ${36-k}/36 ≈ ${r2(1-k/36)}.`]}};
+/* 8. Số đặc trưng */
+D[8]={t:"Số đặc trưng: trung bình, tứ phân vị, độ lệch chuẩn",h:"Sửa dãy số (cách nhau bằng dấu cách hoặc dấu “;”, 3–20 số). Hình hiện các điểm dữ liệu và biểu đồ hộp.",
+c:[["xs","Mẫu số liệu","t","2, 4, 4, 5, 7, 9, 10"]],
+r:v=>{const a=v.xs.replace(/,\s+/g," ").split(/[\s;]+/).filter(Boolean).map(x=>+x.replace(",","."));
+if(a.length<3||a.length>20||a.some(isNaN))return[svg(""),"Hãy nhập từ 3 đến 20 số."];
+const s=[...a].sort((p,q)=>p-q),n=s.length,md=u=>{const k=u.length;return k%2?u[(k-1)/2]:(u[k/2-1]+u[k/2])/2},Q2=md(s),Q1=md(s.slice(0,Math.floor(n/2))),Q3=md(s.slice(Math.ceil(n/2))),mean=s.reduce((p,q)=>p+q,0)/n,vr=s.reduce((p,q)=>p+(q-mean)**2,0)/n,sd=Math.sqrt(vr),I=Q3-Q1,mn=s[0],mx=s[n-1],X=x=>30+(x-mn)/((mx-mn)||1)*300,lo=Q1-1.5*I,hi=Q3+1.5*I,out=s.filter(x=>x<lo||x>hi),cnt={};
+let g=`<line class="ax" x1="20" y1="225" x2="340" y2="225"/>`;
+g+=`<line class="s1" x1="${X(mn)}" y1="82" x2="${X(mx)}" y2="82"/><rect class="rg s1" x="${X(Q1)}" y="62" width="${Math.max(X(Q3)-X(Q1),1)}" height="40"/><line class="s2" x1="${X(Q2)}" y1="62" x2="${X(Q2)}" y2="102" style="stroke-width:3.5"/>`;
+g+=`<text class="tk" x="${X(Q1)}" y="54" text-anchor="middle">Q₁=${r2(Q1)}</text><text class="tk" x="${X(Q2)}" y="116" text-anchor="middle">Q₂=${r2(Q2)}</text><text class="tk" x="${X(Q3)}" y="54" text-anchor="middle">Q₃=${r2(Q3)}</text>`;
+s.forEach(x=>{cnt[x]=(cnt[x]||0)+1;g+=`<circle class="${x<lo||x>hi?"f2":"f1"}" cx="${X(x)}" cy="${212-(cnt[x]-1)*13}" r="5.5"/>`});
+g+=`<path class="f3" d="M${X(mean)} 222 l-6 12 h12z"/><text class="tk" x="${X(mean)}" y="248" text-anchor="middle">x̄=${r2(mean)}</text><text class="tk" x="${X(mn)}" y="248" text-anchor="middle" style="display:${Math.abs(X(mn)-X(mean))<40?"none":"inline"}">${r2(mn)}</text><text class="tk" x="${X(mx)}" y="248" text-anchor="middle" style="display:${Math.abs(X(mx)-X(mean))<40?"none":"inline"}">${r2(mx)}</text>`;
+return[svg(g),`Mẫu đã sắp xếp: ${s.map(r2).join("; ")}.<br>Trung bình x̄ = <b>${r2(mean)}</b>; trung vị Q₂ = <b>${r2(Q2)}</b>; Q₁ = <b>${r2(Q1)}</b>; Q₃ = <b>${r2(Q3)}</b>; ΔQ = ${r2(I)}.<br>Phương sai s² = <b>${r2(vr)}</b>; độ lệch chuẩn s = √s² ≈ <b>${r2(sd)}</b>.<br>Giá trị ngoại lệ (ngoài [${r2(lo)}; ${r2(hi)}]): <b>${out.length?out.map(r2).join("; "):"không có"}</b>.`]}};
+/* ===== Hướng dẫn từng bước và lỗi hay gặp ===== */
+const X=[
+{s:["Xác định các tập A, B (liệt kê hoặc vẽ lên trục số).","Chọn phép toán: ∩ lấy phần chung, ∪ gộp lại, ∖ bỏ phần chung khỏi A.","Với khoảng và đoạn: kiểm tra riêng từng đầu mút (ngoặc vuông lấy, ngoặc tròn không lấy)."],e:["Quên trừ n(A∩B) khi tính n(A∪B) nên đếm trùng.","Viết sai ngoặc ở đầu mút khi giao hoặc hợp các khoảng.","Phủ định “∀” mà vẫn giữ “∀” (phải đổi thành “∃”)."]},
+{s:["Vẽ đường thẳng ax + by = c (lấy hai điểm, ví dụ giao với hai trục).","Thay điểm thử O(0; 0) vào bất phương trình; nếu c = 0 thì chọn điểm khác.","Đúng thì tô nửa mặt phẳng chứa O, sai thì tô nửa còn lại. Dấu < > vẽ nét đứt, ≤ ≥ vẽ nét liền."],e:["Chọn điểm thử nằm ngay trên bờ nên không kết luận được.","Quên đổi chiều dấu khi nhân hai vế với số âm.","Bài tối ưu: bỏ sót một đỉnh khi tính F tại các đỉnh của miền."]},
+{s:["Xét dấu a để biết bề lõm; tính Δ = b² − 4ac.","Đỉnh: x = −b/2a, thay vào hàm số để có y.","Lập bảng biến thiên, tìm giao với Oy là (0; c) và giao với Ox (nếu Δ ≥ 0)."],e:["Quên dấu trừ trong −b/2a.","Nhầm giá trị lớn nhất với nhỏ nhất: a > 0 thì nhỏ nhất, a < 0 thì lớn nhất.","Xét dấu tam thức ngược chiều khi a < 0."]},
+{s:["Vẽ tam giác và ghi các yếu tố đã biết.","Biết hai cạnh và góc xen giữa, hoặc ba cạnh: dùng định lí côsin. Biết một cạnh và góc đối diện: dùng định lí sin.","Tính S = ½bc·sinA, hoặc công thức Heron khi biết ba cạnh."],e:["Dùng góc không xen giữa hai cạnh trong định lí côsin.","Quên lấy căn bậc hai sau khi tính a².","Máy tính đang ở chế độ radian thay vì độ."]},
+{s:["Biểu diễn vectơ bằng tọa độ (x; y).","Cộng, trừ theo từng tọa độ: a + b = (x₁ + x₂; y₁ + y₂).","Tích vô hướng a·b = x₁x₂ + y₁y₂; bằng 0 khi và chỉ khi hai vectơ vuông góc."],e:["Nhầm AB→ với BA→ (ngược dấu).","Quy tắc ba điểm AB→ + BC→ = AC→ phải nối đầu của vectơ này với cuối của vectơ kia.","Quên chia cho |a|·|b| khi tính côsin của góc."]},
+{s:["Tính AB→ = (xB − xA; yB − yA), rồi AB = √(Δx² + Δy²).","Trung điểm M = ((xA + xB)/2; (yA + yB)/2).","Đường thẳng có vtcp u = (u₁; u₂) thì có vtpt n = (u₂; −u₁); viết n·(M − A) = 0."],e:["Nhầm vectơ pháp tuyến với vectơ chỉ phương.","Lấy hiệu tọa độ sai thứ tự (điểm cuối trừ điểm đầu).","Đường tròn: nhớ (x − a)² + (y − b)² = R², tâm là (a; b), không phải (−a; −b)."]},
+{s:["Hỏi: kết quả có phụ thuộc thứ tự không? Có thì dùng hoán vị hoặc chỉnh hợp; không thì dùng tổ hợp.","Quy tắc nhân: các bước liên tiếp độc lập. Quy tắc cộng: các trường hợp loại trừ nhau.","Tính bằng công thức rồi thử lại với số nhỏ để kiểm tra."],e:["Dùng tổ hợp khi bài có thứ tự (ví dụ chọn lớp trưởng và lớp phó).","Quên chia k! khi đổi từ chỉnh hợp sang tổ hợp.","Cộng thay vì nhân, hoặc ngược lại."]},
+{s:["Xác định không gian mẫu Ω và đếm n(Ω).","Đếm n(A): liệt kê hoặc dùng tổ hợp, cùng một cách đếm với n(Ω).","P(A) = n(A)/n(Ω); gặp “ít nhất một” thì dùng biến cố đối P(Ā) = 1 − P(A)."],e:["Thiếu kết quả trong không gian mẫu (với xúc xắc, (1; 2) khác (2; 1)).","Đếm n(A) có thứ tự nhưng n(Ω) không thứ tự.","Quên biến cố đối khi đề có “ít nhất”."]},
+{s:["Sắp xếp mẫu theo thứ tự tăng dần.","Tìm trung vị Q₂, sau đó Q₁ (trung vị nửa dưới) và Q₃ (trung vị nửa trên); n lẻ thì bỏ trung vị khi chia nửa.","Tính ΔQ = Q₃ − Q₁, phương sai, độ lệch chuẩn; giá trị ngoại lệ nằm ngoài [Q₁ − 1,5ΔQ; Q₃ + 1,5ΔQ]."],e:["Quên sắp xếp trước khi tìm trung vị.","Khi n lẻ vẫn giữ trung vị trong cả hai nửa.","Nhầm phương sai với độ lệch chuẩn (độ lệch chuẩn là căn bậc hai của phương sai)."]}];
+const ctl=(m,v)=>m.c.map(x=>{const k=x[0];
+if(Array.isArray(x[2]))return`<label class="sl"><span>${x[1]}</span><select data-lt="${k}">${x[2].map(o=>`<option ${o===v[k]?"selected":""}>${o}</option>`).join("")}</select></label>`;
+if(x[2]==="t")return`<label class="sl" style="flex:1 1 100%"><span>${x[1]}</span><input type="text" data-lt="${k}" value="${esc(v[k])}"></label>`;
+return`<label class="sl"><span>${x[1]}</span><input type="range" data-lt="${k}" min="${x[2]}" max="${x[3]}" step="${x[5]||1}" value="${v[k]}"><b>${v[k]}</b></label>`}).join("");
+const paint=(el,i)=>{const m=D[i],v=LV[i];m.fix&&m.fix(v);const o=m.r(v);el.querySelector(".wsv").innerHTML=o[0];el.querySelector(".ltx").innerHTML=o[1];
+el.querySelectorAll("input[type=range]").forEach(p=>{p.value=v[p.dataset.lt];p.nextElementSibling.textContent=v[p.dataset.lt]})};
+document.addEventListener("input",e=>{const t=e.target;if(!t.dataset||t.dataset.lt===undefined)return;const el=t.closest(".lt"),i=+el.dataset.i;LV[i][t.dataset.lt]=t.type==="range"?+t.value:t.value;paint(el,i)});
+return{slot:i=>D[i]?`<details class="ws lt" open data-i="${i}"><summary>${D[i].t} · thực hành tương tác</summary><p class="wsh">${D[i].h}</p><div class="wsv"></div><div class="wsc"></div><div class="ltx"></div></details>`:"",
+more:i=>X[i]?`<div class="g2"><div class="c"><h3>Cách làm từng bước</h3><ol>${X[i].s.map(x=>`<li>${x}</li>`).join("")}</ol></div><div class="c"><h3>Lỗi hay gặp</h3><ul>${X[i].e.map(x=>`<li>${x}</li>`).join("")}</ul></div></div>`:"",
+mount:()=>document.querySelectorAll(".lt").forEach(el=>{const i=+el.dataset.i,m=D[i];if(!LV[i]){LV[i]={};m.c.forEach(x=>LV[i][x[0]]=Array.isArray(x[2])||x[2]==="t"?x[3]:x[4])}el.querySelector(".wsc").innerHTML=ctl(m,LV[i]);paint(el,i)})};
+})();
 
 sec("home");
 </script>
